@@ -1,4 +1,5 @@
 import { getPageSections, getSectionByName, getSectionsByPrefix } from '@/lib/notion'
+import WaitlistForm from './components/WaitlistForm'
 
 // ─── Fallback data (used when Notion token is absent or returns empty) ─────────
 const FALLBACK_HERO = {
@@ -250,22 +251,9 @@ export default async function HomePage() {
             </p>
 
             {/* Waitlist form */}
-            <form
-              id="waitlist"
-              className="mx-auto flex max-w-md flex-col gap-3 sm:flex-row"
-              onSubmit={(e) => e.preventDefault()}
-            >
-              <input
-                type="email"
-                placeholder="your@email.com"
-                className="input-field flex-1"
-                required
-                aria-label="Email address"
-              />
-              <button type="submit" className="btn-primary whitespace-nowrap">
-                Join Waitlist
-              </button>
-            </form>
+            <div id="waitlist" className="mx-auto max-w-md">
+              <WaitlistForm />
+            </div>
 
             {/* Social proof / stats */}
             <div className="mt-12 flex items-center justify-center gap-8 border-t border-border pt-10 sm:gap-16">
@@ -446,21 +434,7 @@ export default async function HomePage() {
                   'Join 400+ local businesses already on the waitlist. Be first in line when we launch.'}
               </p>
 
-              <form
-                className="flex flex-col gap-3 sm:flex-row"
-                onSubmit={(e) => e.preventDefault()}
-              >
-                <input
-                  type="email"
-                  placeholder="your@email.com"
-                  className="input-field flex-1"
-                  required
-                  aria-label="Email address"
-                />
-                <button type="submit" className="btn-primary whitespace-nowrap">
-                  Join Waitlist
-                </button>
-              </form>
+              <WaitlistForm />
 
               <p className="mt-4 text-xs text-muted">
                 Free during beta &middot; No spam, ever &middot; Unsubscribe any time
