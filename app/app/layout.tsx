@@ -1,4 +1,3 @@
-import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase-server'
 import SidebarClient from './SidebarClient'
 
@@ -16,8 +15,9 @@ export default async function AppLayout({
     data: { user },
   } = await supabase.auth.getUser()
 
+  // No user — render without sidebar (login/signup pages)
   if (!user) {
-    redirect('/app/login')
+    return <>{children}</>
   }
 
   return (
